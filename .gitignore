@@ -1,11 +1,18 @@
 /Datasets
 /machine-learning-zoomcamp
 /Notebook Files
+
 /Data-Engineering/week-1/yellow_cab_trip_data_jan_2021.csv
 /Data-Engineering/week-1/ny_taxi_postgres_data
 /Data-Engineering/week-1/config
 /Data-Engineering/week-1/gcp key
+
 /Zindi-Competitions/Hydropower Climate Optimisation/Climate Data
 /Zindi-Competitions/Hydropower Climate Optimisation/Data
+
 /Data-Engineering/week-2/data_pgadmin
 /Data-Engineering/week-2/ny_taxi_postgres_data
+/Data-Engineering/week-2/flows
+
+/Data-Engineering/week-4/dbt_key
+/Data-Engineering/data-engineering-zoomcamp
