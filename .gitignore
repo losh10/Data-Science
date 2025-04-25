@@ -10,6 +10,9 @@
 /Zindi-Competitions/Hydropower Climate Optimisation/Climate Data
 /Zindi-Competitions/Hydropower Climate Optimisation/Data
 
+/Zindi-Competitions/amini soil prediction challenge/dataset
+/Zindi-Competitions/amini soil prediction challenge/kaggle.json
+
 /Data-Engineering/week-2/data_pgadmin
 /Data-Engineering/week-2/ny_taxi_postgres_data
 /Data-Engineering/week-2/flows
@@ -20,3 +23,9 @@
 /Data-Engineering/data_engineering_zoom_camp-main
 /Data-Engineering/week-4/dbt
 /Data-Engineering/week-4/dbt_0.38.33_linux_amd64.tar.gz
+
+/Data-Engineering/project/postgres_data
+/Data-Engineering/project/gcs_keys
+/Data-Engineering/project/processed_data
+/Data-Engineering/project/weather_data
+/Data-Engineering/project/weather_api.txt

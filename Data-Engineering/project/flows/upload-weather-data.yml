@@ -1,0 +1,23 @@
+id: upload-weather-data
+namespace: weather.pipeline
+
+tasks:
+  - id: upload-to-gcs
+    type: io.kestra.core.tasks.scripts.Python
+    docker:
+      image: your-docker-image-name:latest  # After you build and push it
+    script: |
+      import sys
+      sys.path.append('/app/scripts')
+      from upload_to_gcs import main
+      main()
+
+  - id: upload-to-bigquery
+    type: io.kestra.core.tasks.scripts.Python
+    docker:
+      image: your-docker-image-name:latest
+    script: |
+      import sys
+      sys.path.append('/app/scripts')
+      from upload_to_bigquery import main
+      main()

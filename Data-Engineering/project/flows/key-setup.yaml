@@ -1,0 +1,9 @@
+id: kv_setup
+namespace: weather.etl
+
+tasks:
+  - id: VCK_API_KEY
+    type: io.kestra.plugin.core.kv.Set
+    key: VCK_API_KEY
+    kvType: STRING
+    value: QWMQ4VVB468S6KFJ67HRMMLLZ

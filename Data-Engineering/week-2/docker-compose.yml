@@ -23,46 +23,57 @@ services:
       - "5432:5432"
 
   kestra:
-    image: kestra/kestra:latest
+    image: kestra/kestra:latest # As per user example (consider latest-full if driver issues)
+    container_name: kestra_weather
     pull_policy: always
-    user: "root"
+    # user: "root" # Running as root is generally discouraged unless needed for specific permissions like Docker socket
     command: server standalone
     volumes:
-      - kestra-data:/app/storage
+      # Use named volume for Kestra storage
+      - kestra_data:/app/storage
+      # Mount Docker socket (allows Kestra flows to interact with Docker)
       - /var/run/docker.sock:/var/run/docker.sock
+      # Mount temporary directory (as per user example)
       - /tmp/kestra-wd:/tmp/kestra-wd
+      # Optional: Mount local flows directory
+      # - ./flows:/app/flows
     environment:
+      # --- Kestra Configuration ---
       KESTRA_CONFIGURATION: |
+        # datasources block might be redundant if repository is set, but included per example
         datasources:
           postgres:
-            url: jdbc:postgresql://postgres:5432/kestra
+            url: jdbc:postgresql://postgres:5432/kestra # Connect to postgres service on internal port 5432, db kestra
             driverClassName: org.postgresql.Driver
-            username: kestra
-            password: kestra
+            username: kestra # MUST MATCH POSTGRES_USER above
+            password: kestra # MUST MATCH POSTGRES_PASSWORD above
         kestra:
-          server:
-            basicAuth:
-              enabled: false
-              username: "admin@kestra.io" # it must be a valid email address
-              password: kestra
+          # server: # Basic auth disabled per example
+          #   basicAuth:
+          #     enabled: false
+          #     username: "admin@kestra.io"
+          #     password: kestra # Change this if enabling basic auth
           repository:
-            type: postgres
+            type: postgres # Store flows, executions etc. in Postgres
           storage:
-            type: local
+            type: local # Store file-based artifacts locally in the volume
             local:
-              basePath: "/app/storage"
+              basePath: "/app/storage" # Path inside container mapped by kestra_data volume
           queue:
-            type: postgres
+            type: postgres # Use Postgres for internal queueing
           tasks:
             tmpDir:
-              path: /tmp/kestra-wd/tmp
-          url: http://localhost:8080/
+              path: /tmp/kestra-wd/tmp # Temporary directory for tasks
+          url: http://localhost:8080/ # URL for accessing Kestra UI
     ports:
-      - "8080:8080"
-      - "8081:8081"
+      - "8080:8080" # Kestra UI port
+      - "8081:8081" # Additional port from example (often for workers)
     depends_on:
       postgres:
-        condition: service_started
+        condition: service_healthy # Wait for Postgres healthcheck to pass
+    networks:
+      - kestra_net # Use the same network
+    restart: unless-stopped
 
 
   pgdatabase:
