@@ -1,6 +1,7 @@
 /Datasets
 /machine-learning-zoomcamp
 /Notebook Files
+/MLOPs/mlops-zoomcamp-main
 
 /Data-Engineering/week-1/yellow_cab_trip_data_jan_2021.csv
 /Data-Engineering/week-1/ny_taxi_postgres_data
@@ -11,6 +12,7 @@
 /Zindi-Competitions/Hydropower Climate Optimisation/Data
 
 /Zindi-Competitions/amini soil prediction challenge/dataset
+/Zindi-Competitions/amini soil prediction challenge/processed_data
 /Zindi-Competitions/amini soil prediction challenge/kaggle.json
 
 /Data-Engineering/week-2/data_pgadmin
