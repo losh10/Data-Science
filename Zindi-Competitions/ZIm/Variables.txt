@@ -1,0 +1,49 @@
+=== Variables Explanation for train.csv, val.csv, and test.csv ===
+
+1. train.csv
+   - Purpose: Contains the training dataset with image filenames and their corresponding labels.
+   - Variables:
+     * image_id: Filename of the image (e.g., "Corn_Blight (488).JPG").
+     * label: Disease category or health status of the maize plant. Possible values:
+       - Blight
+       - Common_Rust
+       - Gray_Leaf_Spot
+       - Healthy
+
+   Example:
+   image_id,label
+   Corn_Blight (488).JPG,Blight
+   Corn_Health (778).jpg,Healthy
+
+2. val.csv (Validation Dataset)
+   - Purpose: Contains the validation dataset with image filenames and labels for model tuning.
+   - Variables:
+     * image_id: Filename of the image (e.g., "Corn_Blight (100).JPG").
+     * label: Disease category or health status (same as train.csv).
+
+   Example:
+   image_id,label
+   Corn_Blight (100).JPG,Blight
+   Corn_Health (200).jpg,Healthy
+
+3. test.csv
+   - Purpose: Contains the test dataset with image filenames for prediction (no labels provided).
+   - Variables:
+     * image_id: Filename of the image (e.g., "image_000555.jpg").
+
+   Example:
+   image_id
+   image_000555.jpg
+   image_000056.JPG
+
+4. Directory Structure
+   - /train: Subdirectories for each disease category (Blight, Common_Rust, Gray_Leaf_Spot, Healthy).
+   - /val: Subdirectories for validation images (same categories as /train).
+   - /test: Images for testing (unlabeled in test.csv).
+
+5. Notes
+   - Image formats: .jpg or .JPG.
+   - Usage:
+     * train.csv: Used for model training.
+     * val.csv: Used for model validation/hyperparameter tuning.
+     * test.csv: Used for final model evaluation (predictions compared to ground truth).
